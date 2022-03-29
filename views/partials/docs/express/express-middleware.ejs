@@ -1,0 +1,48 @@
+    <h1 id="item-3">Middleware</h1><br>
+
+    <p>Express is a routing and middleware web framework that has minimal functionality of its own: An Express application is essentially a series of middleware function calls.</p><br>
+
+    <p>Middleware functions are functions that have access to the request object (req), the response object (res), and the next middleware function in the application's request-response cycle. The next middleware function is commonly denoted by a variable named next.</p><br>
+
+    <h6>Middleware functions can perform the following tasks:</h6>
+
+    <p>
+        * Execute any code. <br>
+        * Make changes to the request and the response objects.<br>
+        * End the request-response cycle.<br>
+        * Call the next middleware function in the stack.<br>
+    </p><br>
+
+    <p>If the current middleware function does not end the request-response cycle, it must call next() to pass control to the next middleware function. Otherwise, the request will be left hanging.</p><br>
+
+    <h6>An Express application can use the following types of middleware:</h6>
+
+    <p>
+        * Application-level middleware<br>
+        * Router-level middleware<br>
+        * Error-handling middleware<br>
+        * Built-in middleware<br>
+        * Third-party middleware<br>
+    </p><br>
+
+    <p>You can load application-level and router-level middleware with an optional mount path. You can also load a series of middleware functions together, which creates a sub-stack of the middleware system at a mount point.</p><br>
+
+    <h5>Application-level middleware</h5>
+
+    <p>Bind application-level middleware to an instance of the app object by using the app.use() and app.METHOD() functions, where METHOD is the HTTP method of the request that the middleware function handles (such as GET, PUT, or POST) in lowercase.<br>
+
+        This example shows a middleware function with no mount path. The function is executed every time the app receives a request.</p><br>
+    
+    <h6 id="item-3-1">This is an example of a middleware used in the webiste Kittens for checking if a user is logged in:</h6><br>
+
+    <p>This is the middleware:</p>
+
+    <div class="py-3 px-3 bg-dark terminal">
+        <pre class="text-light"><span class="keyword">function</span> <span class="function-call">isLoggedIn</span>(req, res, next) {<br>   <span class="keyword">if</span> (req.<span class="function-call">isAuthenticated</span>()) {<br>      req.isLogged = <span class="bool">true</span>;<br>      <span class="keyword">return</span> <span class="function-call">next</span>();<br>   }<br>   res.<span class="function-call">redirect</span>(<span class="string">'/unauthorized'</span>);<br>}<br><br><span class="string">module</span>.<span class="string">exports</span> = <span class="function-call">isLoggedIn</span>;</pre>
+    </div><br>
+
+    <p>Here are we using the middleware on our index.js</p>
+
+    <div class="py-3 px-3 bg-dark terminal">
+        <pre class="text-light"><span class="keyword">const</span> { <span class="function-call">isLoggedIn</span> } = <span class="function-call">require</span>(<span class="string">'./middleware/auth.js'</span>);<br><br><span class="comment">// Protect index route from non-authenticated requests</span><br>app.<span class="function-call">get</span>(<span class="string">'/'</span>, <span class="function-call">isLoggedIn</span>, (req, res) => {<br>   res.<span class="function-call">send</span>(<span class="string">'GET request to the homepage'</span>)<br>})</pre>
+    </div><br>

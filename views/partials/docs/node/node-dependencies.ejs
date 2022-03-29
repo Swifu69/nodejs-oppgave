@@ -1,0 +1,45 @@
+    <h1 id="item-1-2">Node Modules</h1>
+    
+    <p>Consider modules to be the same as JavaScript libraries. A set of functions you want to include in your application.Node.js has a set of built-in modules which you can use without any further installation, some of them are: <br><p class="fw-bold">http, fs, path, url, etc.</p></p><br>
+
+    <h1 id="item-2">Server Example</h1><br>
+
+    <p>Making a simple HTTP server in Node.js has become the de facto 'hello world' for the platform. On the one hand, Node.js provides extremely easy-to-use HTTP APIs; on the other hand, a simple web server also serves as an excellent demonstration of the asynchronous strengths of Node.js.</p><br>
+
+    <p>Make a server.js file where we will write our server</p>
+
+    <div class="py-3 px-3 bg-dark terminal">
+        <p class="text-light">$ touch server.js</p>
+        <!-- <pre class="text-light"><span class="keyword">const</span> path = <span class="function-call">require</span>(<span class="string">'path'</span>);<br><br>console.<span class="function-call">log</span>(path.<span class="function-call">join</span>(__dirname, <span class="string">'public'</span>));</pre> -->
+    </div><br>
+
+    <h6>Here is a server you can copy & paste:</h6><br>
+    
+    <div class="py-3 px-3 bg-dark terminal">
+<pre>
+<code id="htmlViewer" style="font-weight:400;display:block;padding: .5em;"><span style="color:rgb(249, 38, 114); font-weight:400;">const</span> http = <span style="color:rgb(230, 192, 123); font-weight:400;">require</span>(<span style="color:rgb(152, 195, 121); font-weight:400;">&#x27;http&#x27;</span>)
+<span style="color:rgb(249, 38, 114); font-weight:400;">const</span> port = <span style="color:rgb(209, 154, 102); font-weight:400;">8080</span>
+    
+<span style="color:rgb(177, 142, 177); font-weight:400;">// Create a server object:</span>
+<span style="color:rgb(249, 38, 114); font-weight:400;">const</span> server = http.createServer(<span style="color:rgb(97, 174, 238); font-weight:400;"><span style="color:rgb(249, 38, 114); font-weight:400;">function</span> (<span style="color:rgb(166, 226, 46); font-weight:400;">req, res</span>) </span>{
+    
+    <span style="color:rgb(177, 142, 177); font-weight:400;">// Write a response to the client</span>
+    res.write(<span style="color:rgb(152, 195, 121); font-weight:400;">&#x27;Hello World&#x27;</span>)
+    
+    <span style="color:rgb(177, 142, 177); font-weight:400;">// End the response </span>
+    res.end()
+})
+    
+<span style="color:rgb(177, 142, 177); font-weight:400;">// Set up our server so it will listen on the port</span>
+server.listen(port, <span style="color:rgb(97, 174, 238); font-weight:400;"><span style="color:rgb(249, 38, 114); font-weight:400;">function</span> (<span style="color:rgb(166, 226, 46); font-weight:400;">error</span>) </span>{
+    
+    <span style="color:rgb(177, 142, 177); font-weight:400;">// Checking any error occur while listening on port</span>
+    <span style="color:rgb(249, 38, 114); font-weight:400;">if</span> (error) {
+        <span style="color:rgb(230, 192, 123); font-weight:400;">console</span>.log(<span style="color:rgb(152, 195, 121); font-weight:400;">&#x27;Something went wrong&#x27;</span>, error);
+    }
+    <span style="color:rgb(177, 142, 177); font-weight:400;">// Else sent message of listening</span>
+    <span style="color:rgb(249, 38, 114); font-weight:400;">else</span> {
+        <span style="color:rgb(230, 192, 123); font-weight:400;">console</span>.log(<span style="color:rgb(152, 195, 121); font-weight:400;">&#x27;Server is listening on port&#x27;</span> + port);
+    }
+})</code></pre>
+    </div><br>

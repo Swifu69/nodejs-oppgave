@@ -1,0 +1,36 @@
+img {
+    width: 100%;
+}
+
+#index-container {
+    padding: 14rem 0;
+}
+
+.terminal {
+    border-radius: 10px;
+}
+
+.keyword {
+    color: rgb(218, 101, 218);
+}
+
+.function-call {
+    color: gold;
+}
+
+.string {
+    color: rgb(54, 179, 54);
+}
+
+.comment {
+    color: rgb(44, 168, 44);
+}
+
+.bool {
+    color: blue;
+}
+
+.active {
+    background: transparent !important;
+}
+

@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "fmt": "^2.0.0",
+    "path": "^0.12.7"
+  },
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
