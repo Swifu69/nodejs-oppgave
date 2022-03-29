@@ -22,5 +22,5 @@ app.get('/about', (req, res) =>{
     res.render('about', { year: new Date().getFullYear() })
 })
 
-app.listen(3000, ()=> console.log('http://localhost:3000'))
+app.listen()
 
