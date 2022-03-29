@@ -22,5 +22,5 @@ app.get('/about', (req, res) =>{
     res.render('about', { year: new Date().getFullYear() })
 })
 
-app.listen()
+app.listen(process.env.PORT)
 
